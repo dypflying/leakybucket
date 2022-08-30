@@ -1,6 +1,6 @@
 Go Leaky-bucket Rate Limiter
 ============================
-This package provides an Golang implemented leaky-bucket algorithm, which is largely ported from the implementation of the Nginx's rate limiter, and introduces a few new features as enhancements.
+This package provides an Golang implemented leaky-bucket algorithm, which is largely ported from the implementation of the Nginx's rate limiter, and introduces a few new features as enhancements. This package uses compare-and-swap (CAS) mechanism to achieve data consistency in multi-threading programs instead of pessimistic locks.
 
 Table of Contents
 =================
@@ -130,7 +130,7 @@ Suppose there is a bucket with a hole at the bottom into which tasks are pouring
 The leaky bucket algorithm is designed for smoothing the bursty traffic, no matter what the input rate is, the output rate is constant. 
 
 ### Which algorithm?
-- Leaky-bucket vs Token-bucket: they are both used for bursty traffic shaping, though there is no explicit cutoff line for their scenarios, the leaky-bucket algorithm is likely used to "protect other systems", such as the Nginx to protect upstreams, and the token bucket algorithm is likely used to "protect self-system". 
+- Leaky-bucket vs Token-bucket: they are both used for bursty traffic shaping, though there is no explicit cutoff line for their scenarios, the leaky-bucket algorithm is likely used to "protect other systems", such as the Nginx to protect upstreams, and the token bucket algorithm is likely used to "protect self-system". The pakcage of https://pkg.go.dev/golang.org/x/time/rate is an implementation of token-bucket algorithm.
 - Leaky-bucket vs Sliding-windows: Leaky-bucket is used for not only throttling traffic but also smoothing out the bursty traffic since it uses a configurable bucket to accommodate the  bursty traffic, the sliding-windows is only used for thottling traffic within a configured rate. 
 
 ### Dig into it
