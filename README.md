@@ -1,6 +1,6 @@
 Go Leaky-bucket Rate Limiter
 ============================
-This package provides an Golang implemented leaky-bucket algorithm, which is largely ported from the implementation of the Nginx's rate limiter, and introduces a few new features as enhancements. This package uses compare-and-swap (CAS) mechanism to achieve data consistency in multi-threading programs instead of pessimistic locks.
+This package provides an Golang implemented leaky-bucket algorithm, which is largely ported from the implementation of the Nginx's rate limiter, and introduces a few new features as enhancements. This package uses the compare-and-swap (CAS) mechanism to achieve data consistency for multi-threading programs.
 
 Table of Contents
 =================
